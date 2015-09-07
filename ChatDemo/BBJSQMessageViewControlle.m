@@ -15,7 +15,9 @@
 #import "BBJSQMessageViewController.h"
 
 
-@interface BBJSQMessageViewController ()
+@interface BBJSQMessageViewController ()<XMPPOutgoingFileTransferDelegate>
+
+@property (nonatomic, strong) XMPPOutgoingFileTransfer *xmppOutgoingFileTransfer;
 
 @end
 
@@ -73,6 +75,16 @@
      del.messageDelegate = self;
    // [self getAvatar];
 
+}
+
+- (XMPPOutgoingFileTransfer *)xmppOutgoingFileTransfer
+{
+    if (!_xmppOutgoingFileTransfer) {
+        _xmppOutgoingFileTransfer = [[XMPPOutgoingFileTransfer alloc] initWithDispatchQueue:dispatch_get_global_queue(0, 0)];
+        [_xmppOutgoingFileTransfer activate:[BBXMPPTool sharedInstance].xmppStream];
+        [_xmppOutgoingFileTransfer addDelegate:self delegateQueue:dispatch_get_global_queue(0, 0)];
+    }
+    return _xmppOutgoingFileTransfer;
 }
 
 /** 查询聊天记录 */
@@ -195,7 +207,7 @@
                                                        delegate:self
                                               cancelButtonTitle:@"Cancel"
                                          destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Send photo", @"Send location", @"Send video", nil];
+                                              otherButtonTitles:@"发送图片", @"发送位置", @"发送视频", nil];
     
     [sheet showFromToolbar:self.inputToolbar];
 }
@@ -526,6 +538,31 @@
         return NO;
     }
     return YES;
+}
+
+#pragma mark - 文件发送代理
+- (void)xmppOutgoingFileTransfer:(XMPPOutgoingFileTransfer *)sender
+                didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError:%@",error);
+}
+
+- (void)xmppOutgoingFileTransferDidSucceed:(XMPPOutgoingFileTransfer *)sender
+{
+    NSLog(@"xmppOutgoingFileTransferDidSucceed");
+    
+    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:self.chatJID];
+    
+    //将这个文件的发送者添加到message的from
+    [message addAttributeWithName:@"from" stringValue:[BBXMPPTool sharedInstance].xmppStream.myJID.bare];
+    [message addSubject:@"audio"];
+    
+    NSString *path =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    path = [path stringByAppendingPathComponent:sender.outgoingFileName];
+    
+    [message addBody:path.lastPathComponent];
+    
+    [[BBXMPPTool sharedInstance].xmppMessageArchivingCoreDataStorage archiveMessage:message outgoing:NO xmppStream:[BBXMPPTool sharedInstance].xmppStream];
 }
 
 - (void)didReceiveMemoryWarning {

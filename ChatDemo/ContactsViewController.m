@@ -26,9 +26,11 @@
 
     BBXMPPTool *del = [BBXMPPTool sharedInstance];
     del.rosterChangeDelegate= self;
-    
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -57,7 +59,6 @@
 
     return self.contacts.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell" forIndexPath:indexPath];

@@ -53,7 +53,6 @@ static BBXMPPTool *_instance;
         [_xmppReconnect activate:self.xmppStream];
         [_xmppReconnect setAutoReconnect:YES];
         
-        
          // 3.好友模块 支持我们管理、同步、申请、删除好友
         _xmppRosterMemoryStorage = [[XMPPRosterMemoryStorage alloc] init];
         _xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:_xmppRosterMemoryStorage];

@@ -26,7 +26,7 @@
         
         self.avatars = @{ kJSQDemoAvatarIdSquires : Image, @"kang@appledeimac.local":userImage};
         
-        self.users =   @{ kJSQDemoAvatarIdSquires : kJSQDemoAvatarDisplayNameSquires,
+        self.users = @{ kJSQDemoAvatarIdSquires : kJSQDemoAvatarDisplayNameSquires,
                           @"kang@appledeimac.local":@"header"
                           };
         

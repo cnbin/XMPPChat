@@ -8,22 +8,16 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 		<key>JSQSystemSoundPlayer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -33,12 +27,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>80A8A32990955CBA11440A3C1EDF1AC3</key>
+		<key>936D969D742030D43A0A599CF577A77C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F6F9B60C373E2AE3DCB25C6D6505079</key>
+		<key>E3D1E80969F51C851C3FD76EB2AFB957</key>
 		<dict>
 			<key>primary</key>
 			<true/>

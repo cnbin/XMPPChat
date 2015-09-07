@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/apple/Desktop/chat/ChatDemo-master/cnbin_XMPPChat.xcodeproj">
+      location = "group:cnbin_XMPPChat.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
