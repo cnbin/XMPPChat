@@ -1,0 +1,24 @@
+PODS:
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+
+DEPENDENCIES:
+  - JSQMessagesViewController (from `https://github.com/jessesquires/JSQMessagesViewController.git`,
+    branch `develop`)
+
+EXTERNAL SOURCES:
+  JSQMessagesViewController:
+    :branch: develop
+    :git: https://github.com/jessesquires/JSQMessagesViewController.git
+
+CHECKOUT OPTIONS:
+  JSQMessagesViewController:
+    :commit: e63f45308aa01b2cdf5004d80de3a21f52ef3db2
+    :git: https://github.com/jessesquires/JSQMessagesViewController.git
+
+SPEC CHECKSUMS:
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+
+COCOAPODS: 0.38.2
